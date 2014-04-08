@@ -2,6 +2,7 @@
 
 */
 
+
 $(document).ready(function() {
 	var win = $(window);
 	var doc = $(document);
@@ -19,31 +20,34 @@ $(document).ready(function() {
 	var oldMouseY;
 	var oldMouseX;
 
+  var currentChallenge = 0;
+
 	var events = {
 		init: function(){
       drawRings();
 			pageResize();
       win.resize(pageResize);
+      $('.copy').widowFix();
+      $('h1').widowFix();
       $('#prove-it').click(showIntro);
       $('#main-nav').click(showNav);
       $('.option').click(answerQuestion);
       $('#audio-btn').click(toggleMusic);
       $('#balance h2').click(toggleExtras);
       $('#intro').click(answerQuestion);
+      $('.challenge').click(nextChallenge);
+      $('form button').css({
+        opacity: 0,
+        top: 40
+      })
       function toggleExtras() {
         $('#extras').toggleClass('expanded')
       }
-      function drawRings() {
-        for(var i=0;i<17;i++){
-          $('#rings').append('<div class="ring"></div>');
-          $('.ring').eq(i).css({
-            '-webkit-transform':'perspective(2000px) translate3d(-50%, -50%,'+((i+1)*-(2500))+'px)',
-            '-webkit-transform-origin':'0% 0%'
-          })
-        }
-      }
       function answerQuestion(e) {
         $('#balance,#day,#date-line,#logo,#ticks').addClass('visible');
+        $('.challenges').css({
+          display: 'block'
+        })
         $('#audio-btn').addClass('hidden');
         $('#intro').css({
           '-webkit-transition':'1s',
@@ -61,6 +65,9 @@ $(document).ready(function() {
         snd.play();
         $('#audio-btn').addClass('visible');
         $('#welcome,#logo').addClass('out');
+        $('#welcome').css({
+          display: 'none'
+        })
         $('#intro').addClass('intro-play');
       }
       function toggleMusic() {
@@ -72,6 +79,26 @@ $(document).ready(function() {
           snd.play();
         }
       }
+      function nextChallenge() {
+        $('.challenge').eq(currentChallenge).css({
+          display: 'none'
+        })
+        $('.tick').eq(currentChallenge).removeClass('current')
+        currentChallenge++;
+        $('.challenge').eq(currentChallenge).css({
+          display: 'block'
+        })
+        $('#date-line').css({
+          top: (currentChallenge+1)*(WIN_H/33)
+        })
+        $('#current-day').html(currentChallenge+1)
+        $('.tick').eq(currentChallenge).addClass('current');
+        if(currentChallenge == 9 || currentChallenge == 16 || currentChallenge == 23){
+          alert('Payday!')
+        }
+      }
+
+      // WINDOW
 			function pageResize (e) {
 				WIN_H = win.height();
 				WIN_W = win.width();
@@ -88,6 +115,17 @@ $(document).ready(function() {
 				initialized = true;
         placeTicks();
 			}
+
+      // INITIALIZATION
+      function drawRings() {
+        for(var i=0;i<17;i++){
+          $('#rings').append('<div class="ring"></div>');
+          $('.ring').eq(i).css({
+            '-webkit-transform':'perspective(2000px) translate3d(-50%, -50%,'+((i+1)*-(2500))+'px)',
+            '-webkit-transform-origin':'0% 0%'
+          })
+        }
+      }
       function placeTicks(){
         $(".tick").each(function(i){
           $('.tick').eq(i).css({

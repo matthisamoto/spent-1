@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html>
     <head>
       <meta charset="utf-8">
@@ -12,6 +12,7 @@
     <body>
       <audio src="sounds/intro.mp3" type="audio/mpeg" id="intro-music"></audio>
         <div id="logo"><img src="img/logo.png"></div>
+          
         <div id="welcome" class="text-block">
             <h3>Urban Ministries of Durham serves over 6,000 people every year. But you'd never need help, right?</h3>
             <div id="prove-it">
@@ -61,7 +62,7 @@
                 <p>You chose to live farther away from your job, so your rent is lower. But your gas costs are higher. In fact, for every dollar a working family saves on housing, they spend an additional 77 cents on transportation.</p>
             </div>
             <div id="ticks" class="hidden">
-              <div class="tick"></div>
+              <div class="tick current"></div>
               <div class="tick"></div>
               <div class="tick"></div>
               <div class="tick"></div>
@@ -94,7 +95,7 @@
               <div class="tick">1</div>
             </div>
             <div id="conscience" class="drawer"></div>
-            <div id="day" class="hidden"><h2>DAY 1<span>/30</span></h2></div>
+            <div id="day" class="hidden"><h2>DAY <span id="current-day">1</span><span id="total-days">/30</span></h2></div>
             <div id="date-line" class="hidden"></div>
             <div id="balance" class="hidden"><h2><span>$</span>1000<div class="arrow-down" id="balance-btn"></div></h2>
             </div>
@@ -117,15 +118,824 @@
             </div>
             <nav id="main-nav"> 
               <div id="links">
-                <a href="http://mckinney.com">Made by McKinney</a> 
+                <form action="/spent" method="POST">
+                  <script
+                    src="https://checkout.stripe.com/checkout.js"
+                    class="stripe-button"
+                    data-key="pk_test_6pRNASCoBOKtIshFeQd4XMUh"
+                    data-image="img/umd.png"
+                    data-name="Help Someone Living Spent"
+                    data-description="$5 = A Day's Meals"
+                    data-amount="500">
+                  </script><a href="#donate">Donate</a>
+                </form>
+                <a href="#about">About</a>
+                <a href="http://mckinney.com">Made by McKinney</a>                 
                 <a href="http://mckinney.com/privacy-policy">Privacy</a> 
                 <a href="mailto:spent@mckinney.com">Contact Us</a> 
-                <a href="#about">About</a>  
-                <a href="#donate">Donate</a> 
                 <a href="http://playspent.org/doc/UMD_Spent_Sources.pdf">Sources</a>
               </div>
             </nav>
         </div>
+<div class="challenges">
+
+           <div class="challenge" id="0">
+              <div class="title">Server Challenge_Shift Change_JOB</div>
+              <div class="copy">The Affordable Care Act requires you get health insurance. The good news? Your child is covered by the state. The bad? You aren’t.</div>
+              <div class="question">WHICH PLAN DO YOU WANT?</div>
+              <div class="options">
+                <div class="option" id="558" title="Continue">
+                  <div class="option-title">Gold Plan</div>
+                  <span class="option-details">
+                 $329/mo.
+                 <br>
+                 $15 co-pay
+                  </span>
+                </div>
+
+                <div class="option" id="558" title="Continue">
+                  <div class="option-title">Silver Plan</div>
+                  <div class="option-details">
+                 $268/mo.
+                 <br>
+                 $25 co-pay
+                  </div>
+                </div>
+
+                <div class="option" id="558" title="Continue">
+                  <div class="option-title">Bronze Plan</div>
+                  <div class="option-details">
+                 $232/mo.
+                 <br>
+                 $45 co-pay
+                  </div>
+                </div>
+
+                <div class="option" id="558" title="Continue">
+                  <div class="option-title">Opt Out</div>
+                  <div class="option-details">Penalty:
+                 <br>$12/mo.
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="challenge" id="1">
+              <div class="title">Find a Job</div>
+              <div class="question">YOU’RE RUNNING OUT<br>OF MONEY FAST.</div>
+              <div class="copy">It’s time to get a job – any job. Here’s what’s available. Choose one:</div>
+
+              <div class="options">
+                <div class="option" id="558" title="Continue">
+                <div class="option-title">Restaurant Server</div>
+                  <span class="option-details">
+                 Pay: $2.13/hr. + tips
+                 <br>
+                 Hours: Variable
+                  </span>
+                </div>
+
+                <div class="option" id="558" title="Continue">
+                  <div class="option-title">Warehouse Worker</div>
+                  <div class="option-details">
+                 Pay: $9/hr.
+                 <br>
+                 Hours: 12p-7p
+                  </div>
+                </div>
+
+                <div class="option" id="558" title="Continue">
+                  <div class="option-title">Office Temp</div>
+                  <div class="option-details">
+                 Pay: $9/hr.
+                 <br>
+                 Hours: 12p-7p
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="challenge" id="3">
+              <div class="title">Find a Place to Live</div>
+              <div class="copy">Monthly Rent Cost Range: $850 @ 0 miles — $600 @ 50 miles</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="copy">Monthly Gas Costs: .08/mile x number of miles to work and back x 40 trips Combined total is what comes out of the account.</div>
+              <div class="options">
+                <div class="option" id="374">0 – 5 miles away</div>
+                <div class="option" id="733"> 15 miles away</div>
+                <div class="option" id="85421">> 15 miles away</div>
+              </div>
+            </div>
+            <div class="challenge" id="4">
+              <div class="title">Storage Unit</div>
+              <div class="copy">Your new apartment is too small for your stuff.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="79">Rent a storage unit ($45)</div>
+                <div class="option" id="169">Ask a friend to store it</div>
+                <div class="option" id="141">Have a yard sale</div>
+              </div>
+            </div>
+            <div class="challenge" id="677">
+              <div class="title">Bank Fee</div>
+              <div class="copy">You’ve been charged a $5 bank fee because your account is below $50.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="715">Continue</div>
+              </div>
+            </div>
+            <div class="challenge" id="329">
+              <div class="title">Temp_Conflict with FullTimers_JOB</div>
+              <div class="copy">You’re doing some filing when you hear two full-time employees saying things about you that are hurtful, not to mention untrue.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="889">Confront them</div>
+                <div class="option" id="31">Stay quiet</div>
+              </div>
+            </div>
+            <div class="challenge" id="520">
+              <div class="title">Temp_Break Something_JOB</div>
+              <div class="copy">You’re working at a retail store, helping prepare for the grand opening. As you grab a $25 vase, it slips from your hand and shatters. Nobody sees.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="332">Pay for the vase</div>
+                <div class="option" id="527">Hide the evidence</div>
+              </div>
+            </div>
+            <div class="challenge" id="181">
+              <div class="title">Temp_Break Something2_JOB</div>
+              <div class="copy">Remember that vase you broke? The owner of the shop called the temp agency and accused your co-worker of breaking it and hiding the evidence.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="838">Confess that it was you</div>
+                <div class="option" id="309">Keep quiet</div>
+              </div>
+            </div>
+            <div class="challenge" id="873">
+              <div class="title">Which Bill to Pay_Cell Phone or Insurance</div>
+              <div class="copy">Two bills are due today.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="64">Pay cell phone bill ($75)</div>
+                <div class="option" id="184">Pay car insurance ($100)</div>
+                <div class="option" id="735">Pay them both ($175)</div>
+                <div class="option" id="85422">Borrow money from a friend</div>
+              </div>
+            </div>
+            <div class="challenge" id="446">
+              <div class="title">Which Bill to Pay_Gas or Electric</div>
+              <div class="copy">Two bills are due today.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="357">Pay gas bill ($100)</div>
+                <div class="option" id="59">Pay electric bill ($125)</div>
+                <div class="option" id="598">Pay them both ($225)</div>
+                <div class="option" id="85423">Borrow money from a friend</div>
+              </div>
+            </div>
+            <div class="challenge" id="386">
+              <div class="title">Grocery Shopping</div>
+              <div class="copy">Money may be tight, but you still need to eat – it’s time to go shopping. These groceries need to last you a few weeks, so choose wisely.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="3861">Spent 0-15</div>
+                <div class="option" id="3862">Spent 16-40</div>
+                <div class="option" id="3863">Spent 41-60</div>
+              </div>
+            </div>
+            <div class="challenge" id="869">
+              <div class="title">Creditor Calls_JOB</div>
+              <div class="copy">The phone rings: “Answer it”</div>
+                <div class="question">WHAT DO YOU WANT TO DO?</div>
+
+              <div class="copy">“Hello. I’m calling from Consumer Collections Corp about the overdue charges on a vehicle in your possession.”</div>
+              <div class="options">
+                <div class="option" id="391">Make a payment ($250)</div>
+                <div class="option" id="576">Hang up</div>
+              </div>
+            </div>
+            <div class="challenge" id="580">
+              <div class="title">Car Repossessed_JOB</div>
+              <div class="copy">Your car has been repossessed – guess you shouldn’t have hung up on that creditor.</div>
+                <div class="question">WHAT DO YOU WANT TO DO?</div>
+                <div class="copy">Since you can’t get to work, your boss has to let you go. No job = no more paychecks.</div>
+              <div class="options">
+                <div class="option" id="739">Continue</div>
+              </div>
+            </div>
+            <div class="challenge" id="443">
+              <div class="title">Rent Hike_JOB</div>
+              <div class="copy">Without warning, your landlord has raised your rent, effective immediately. When you argue that the increase is illegal, you’re told, “If you don’t like it, you can move out.”</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="835">Find somewhere else to live</div>
+                <div class="option" id="37">Ask a friend for help</div>
+                <div class="option" id="85389">Pay it ($150)</div>
+              </div>
+            </div>
+            <div class="challenge" id="628">
+              <div class="title">Your Car Broke Down</div>
+              <div class="copy">On the way to drop off your kid at school, something blew in your car. You don’t know what’s wrong, but it can’t be good.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="201">Pay to fix it ($300)</div>
+                <div class="option" id="496">Ask a friend for help</div>
+              </div>
+            </div>
+            <div class="challenge" id="649">
+              <div class="title">Car Registration</div>
+              <div class="copy">Your car's registration is due, but it’ll cost $250 to get it road-legal.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="265">Pay the money</div>
+                <div class="option" id="341">Take your chances</div>
+              </div>
+            </div>
+            <div class="challenge" id="453">
+              <div class="title">Toothache</div>
+              <div class="copy">Your tooth has been hurting for weeks, and it’s starting to get unbearable. You need a root canal, but you don’t have dental insurance.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="202">Get it fixed ($400)</div>
+                <div class="option" id="402">Use some numbing gel</div>
+              </div>
+            </div>
+            <div class="challenge" id="449">
+              <div class="title">Credit Card Bill - JOB</div>
+              <div class="copy">Your credit card kept you afloat while you were trying to hold onto your home. But even though the house is gone, the balance isn’t.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="162">Pay it off ($7,300)</div>
+                <div class="option" id="734">Pay the minimum ($219)</div>
+                <div class="option" id="823">Ignore it</div>
+              </div>
+            </div>
+            <div class="challenge" id="782">
+              <div class="title">Birthday Party</div>
+              <div class="copy">Your child has been invited to a birthday party. They need to bring a present.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="833">Buy the present ($10)</div>
+                <div class="option" id="125">Send your kid without a present</div>
+                <div class="option" id="352">Keep your kid home from the party</div>
+              </div>
+            </div>
+            <div class="challenge" id="358">
+              <div class="title">Out of Gas_JOB_WT</div>
+              <div class="copy">You come out of your house to discover that someone has siphoned the gas from your car. And you’re already running late for work.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="500">Take the bus</div>
+                <div class="option" id="2621">Call in sick</div>
+                <div class="option" id="658">Ask a friend for a ride</div>
+              </div>
+            </div>
+            <div class="challenge" id="197">
+              <div class="title">Field Trip</div>
+              <div class="copy">Your child’s class is going on a field trip to the natural history museum. The trip costs $15.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="832">Pay the money</div>
+                <div class="option" id="743">Don't pay</div>
+              </div>
+            </div>
+            <div class="challenge" id="857">
+              <div class="title">Sick Co-worker _JOB</div>
+              <div class="copy">One of your co-workers has gotten seriously ill. Because your company doesn’t offer sick days, everyone is contributing $20 to help her out.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="304">Pitch in</div>
+                <div class="option" id="718">Say you forgot your wallet</div>
+              </div>
+            </div>
+            <div class="challenge" id="97">
+              <div class="title">The Flu_JOB_S</div>
+              <div class="copy">Your head is pounding and you’re burning up. But you have to be at work in an hour.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="679">Call in sick</div>
+                <div class="option" id="616">Go anyway</div>
+              </div>
+            </div>
+            <div class="challenge" id="570">
+              <div class="title">The Flu_JOB_WT</div>
+              <div class="copy">Your head is pounding and you’re burning up. But you have to be at work in an hour.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="93">Call in sick</div>
+                <div class="option" id="736">Go anyway</div>
+              </div>
+            </div>
+            <div class="challenge" id="722">
+              <div class="title">Sick Child_JOB_S</div>
+              <div class="copy">The flu has been going around – and it just hit your house. Your child is running a fever and has the chills. But you’re supposed to be at work.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="382">Stay home from work</div>
+                <div class="option" id="342">Send them to school sick</div>
+                <div class="option" id="552">Leave them home alone</div>
+              </div>
+            </div>
+            <div class="challenge" id="94">
+              <div class="title">Sick Child_JOB_WT</div>
+              <div class="copy">The flu has been going around – and it just hit your house. Your child is running a fever and has the chills. But you’re supposed to be at work.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="765">Stay home from work</div>
+                <div class="option" id="477">Send them to school sick</div>
+                <div class="option" id="893">Leave them home alone</div>
+              </div>
+            </div>
+            <div class="challenge" id="819">
+              <div class="title">Forgot Your Lunch _JOB</div>
+              <div class="copy">You’ve been working for several hours, and you’re starving. But you forgot your lunch.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="161">Buy a salad ($6)</div>
+                <div class="option" id="457">Buy a burger from the dollar menu</div>
+              </div>
+            </div>
+            <div class="challenge" id="439">
+              <div class="title">Your Friend’s Wedding_JOB_S</div>
+              <div class="copy">Your best friend from childhood is getting married, and they want you to be in the wedding. The only problem: It’s in another state.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="670">Fly to the wedding ($350)</div>
+                <div class="option" id="881">Tell your friend you won’t be there</div>
+              </div>
+            </div>
+            <div class="challenge" id="831">
+              <div class="title">Your Friend’s Wedding_JOB_WT</div>
+              <div class="copy">Your best friend from childhood is getting married, and they want you to be in the wedding. The only problem: It’s in another state.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="554">Fly to the wedding ($350)</div>
+                <div class="option" id="518">Tell your friend you won’t be there</div>
+              </div>
+            </div>
+            <div class="challenge" id="684">
+              <div class="title">Ice Cream Truck</div>
+              <div class="copy">Your kid has a friend over when you hear the telltale sound of the ice cream truck. They both run over to the truck.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="7">Buy some ice cream ($5)</div>
+                <div class="option" id="393">Say no</div>
+              </div>
+            </div>
+            <div class="challenge" id="865">
+              <div class="title">Accident</div>
+              <div class="copy">You’re driving with your kid in the backseat when your car slips on a slick stretch of road and slides into a parked car, causing a big dent in the bumper and a broken taillight.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="855">Pay the damage ($550)</div>
+                <div class="option" id="422">Drive away</div>
+              </div>
+            </div>
+            <div class="challenge" id="587">
+              <div class="title">Night Out</div>
+              <div class="copy">A bunch of friends are going to a free concert tonight, and you want to go – but you’ve got a kid to worry about.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="864">Get a babysitter ($30)</div>
+                <div class="option" id="586">Stay home</div>
+              </div>
+            </div>
+            <div class="challenge" id="717">
+              <div class="title">Play the Lottery</div>
+              <div class="copy">Everyone is pitching in for a lottery pool.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="847">Pay $10 to play</div>
+                <div class="option" id="261">Don’t play</div>
+              </div>
+            </div>
+            <div class="challenge" id="506">
+              <div class="title">Math Help</div>
+              <div class="copy">Your child is above average in language skills but is struggling with math.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="92">Hire a tutor ($50)</div>
+                <div class="option" id="870">Give your child help</div>
+                <div class="option" id="85347">Ask a friend for help</div>
+                <div class="option" id="85430">Give your child help</div>
+              </div>
+            </div>
+            <div class="challenge" id="494">
+              <div class="title">Gifted Program_JOB_S</div>
+              <div class="copy">Your child has been identified as gifted and invited into the school’s gifted program. The materials for the course cost $50.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="204">Pay the money</div>
+                <div class="option" id="759">Apply for a scholarship</div>
+                <div class="option" id="681">Decline the opportunity</div>
+              </div>
+            </div>
+            <div class="challenge" id="891">
+              <div class="title">Gifted Program_JOB_WT</div>
+              <div class="copy">Your child has been identified as gifted and invited into the school’s gifted program. The materials for the course cost $50.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="781">Pay the money</div>
+                <div class="option" id="207">Apply for a scholarship</div>
+                <div class="option" id="221">Decline the opportunity</div>
+              </div>
+            </div>
+            <div class="challenge" id="572">
+              <div class="title">Laundry Day</div>
+              <div class="copy">You’ve been putting off doing laundry for weeks because you don’t have a washer or dryer.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="325">Ask a friend</div>
+                <div class="option" id="746">Go to the laundromat ($30)</div>
+              </div>
+            </div>
+            <div class="challenge" id="510">
+              <div class="title">Help Mom or Not?</div>
+              <div class="copy">Your mom needs crucial medication but doesn’t have the $100 she needs to buy it.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="764">Give it to her</div>
+                <div class="option" id="790">Say no</div>
+              </div>
+            </div>
+            <div class="challenge" id="685">
+              <div class="title">Food Stamps</div>
+              <div class="copy">Your income level qualifies you for food stamps.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="24">Apply</div>
+                <div class="option" id="825">Go hungry</div>
+              </div>
+            </div>
+            <div class="challenge" id="74">
+              <div class="title">To Steal or Not to Steal</div>
+              <div class="copy">You’re walking down the street when you see someone drop a $10 bill.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="208">Give it to them</div>
+                <div class="option" id="257">Pocket the $10</div>
+              </div>
+            </div>
+            <div class="challenge" id="857">
+              <div class="title">Your Kid Gets a Present</div>
+              <div class="copy">A family friend sends your child a card. Inside is $10.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="502">Give your child the $10</div>
+                <div class="option" id="70">Keep the $10</div>
+              </div>
+            </div>
+            <div class="challenge" id="22">
+              <div class="title">Funeral_JOB_S</div>
+              <div class="copy">Your grandfather has passed away. You’ve always been very close to him, and you want to go to the memorial service, which is being held several states away.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="596">Fly out for the service ($350)</div>
+                <div class="option" id="30">Take time off and drive</div>
+                <div class="option" id="408">Skip the memorial</div>
+              </div>
+            </div>
+            <div class="challenge" id="527">
+              <div class="title">Funeral_JOB_WT</div>
+              <div class="copy">Your grandfather has passed away. You’ve always been very close to him, and you want to go to the memorial service, which is being held several states away.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="308">Fly out for the service ($350)</div>
+                <div class="option" id="359">Take time off and drive</div>
+                <div class="option" id="610">Skip the memorial</div>
+              </div>
+            </div>
+            <div class="challenge" id="885">
+              <div class="title">Family Pet_Pet Fee</div>
+              <div class="copy">Your landlord found out that you have a pet, and now you have to pay a $350 pet fee.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="348">Pay the fee</div>
+                <div class="option" id="456">Ask a friend to take your pet</div>
+                <div class="option" id="34">Take your pet to the animal shelter</div>
+              </div>
+            </div>
+            <div class="challenge" id="284">
+              <div class="title">Family Pet_Sick</div>
+              <div class="copy">Your family pet is sick and won’t get better without treatment.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="195">Pay for treatment ($400)</div>
+                <div class="option" id="376">Have it put to sleep ($50)</div>
+                <div class="option" id="377">Let your pet suffer</div>
+              </div>
+            </div>
+            <div class="challenge" id="215">
+              <div class="title">Depression_no insurance</div>
+              <div class="copy">Trying to keep your family afloat is wearing you down. You think you might be depressed.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="25">Get a prescription for antidepressants ($175)</div>
+                <div class="option" id="320">Talk to a therapist ($50)</div>
+                <div class="option" id="334">Pretend you’re fine</div>
+              </div>
+            </div>
+            <div class="challenge" id="34">
+              <div class="title">Depression_insurance</div>
+              <div class="copy">Trying to keep your family afloat is wearing you down. You think you might be depressed.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="44">Get a prescription for antidepressants</div>
+                <div class="option" id="726">Talk to a therapist</div>
+                <div class="option" id="631">Pretend you’re fine</div>
+              </div>
+            </div>
+           <div class="challenge" id="172">
+              <div class="title">Server Challenge_Shift Change_JOB</div>
+              <div class="copy">Your boss moves you to the midday shift, which means fewer tables and way fewer tips. Future paychecks will be about $75 short.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="558">Continue</div>
+              </div>
+            </div>
+            <div class="challenge" id="112">
+              <div class="title">Server Challenge_Break Something_JOB</div>
+              <div class="copy">You’re carrying a stack of plates to the back when you drop your tray, shattering them all. Everyone else is on the floor, so nobody saw you do it.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="324">Pay $25 to replace the plates</div>
+                <div class="option" id="239">Hide the evidence</div>
+              </div>
+            </div>
+            <div class="challenge" id="493">
+              <div class="title">Server Challenge_Break Something2_JOB</div>
+              <div class="copy">Your supervisor discovered the plates you broke but blames your co-worker.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="649">Confess that it was you</div>
+                <div class="option" id="711">Keep quiet</div>
+              </div>
+            </div>
+            <div class="challenge" id="295">
+              <div class="title">Warehouse Challenges_PayPiece_JOB</div>
+              <div class="copy">Your company has introduced an option where, instead of being paid by the hour, you can be paid by the piece.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="684">Stay with an hourly paycheck</div>
+                <div class="option" id="498">Opt for the pay/piece system</div>
+              </div>
+            </div>
+            <div class="challenge" id="553">
+              <div class="title">Warehouse Challenge_Injury_JOB</div>
+              <div class="copy">The repetitive work you do is taking its toll. Your back hurts so badly you can barely stand, and it’s only the beginning of your shift.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="410">Submit a workers’ comp claim</div>
+                <div class="option" id="5">Work through the pain</div>
+                <div class="option" id="495">Take the day off</div>
+              </div>
+            </div>
+            <div class="challenge" id="134">
+              <div class="title">Warehouse Challenge_Break Something_JOB</div>
+              <div class="copy">You weren’t paying attention, and you broke something as you were putting it into a box.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="683">Pay $25 to cover the broken item</div>
+                <div class="option" id="328">Hide the evidence</div>
+              </div>
+            </div>
+            <div class="challenge" id="333">
+              <div class="title">Warehouse Challenge_Break Something2_JOB</div>
+              <div class="copy">Your supervisor discovered the broken item you hid but blames your co-worker.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="650">Confess that it was you</div>
+                <div class="option" id="173">Keep quiet</div>
+              </div>
+            </div>
+            <div class="challenge" id="275">
+              <div class="title">Temp Challenge_JOB</div>
+              <div class="copy">You ended your work at one company and are waiting for another call from the temp agency. Unfortunately, this is a slow week, and you miss three days of work.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="85345">Continue</div>
+              </div>
+            </div>
+            <div class="challenge" id="2625">
+              <div class="title">Higher Education</div>
+              <div class="copy">The local community college is offering an online course in computer science, which could be your ticket to a higher paycheck. But the class costs $200.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="2627">Sign up ($200)</div>
+                <div class="option" id="2628">Maybe next semester</div>
+              </div>
+            </div>
+            <div class="challenge" id="2626">
+              <div class="title">Free Lunch</div>
+              <div class="copy">Your child comes home in tears and threatens to stop eating lunch because other kids made fun of all the “free lunch kids.”</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="2629">Add lunch money to your monthly budget ($3/day)</div>
+                <div class="option" id="2630">Risk them going hungry</div>
+              </div>
+            </div>
+            <div class="challenge" id="2631">
+              <div class="title">Organizer_JOB</div>
+              <div class="copy">You’re walking into work when someone approaches you in the parking lot. They want to organize a union and push for better pay.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="2632">Talk to them</div>
+                <div class="option" id="2633">Keep walking</div>
+              </div>
+            </div>
+            <div class="challenge" id="2634">
+              <div class="title">Extra Work</div>
+              <div class="copy">Your neighbor is moving and has offered to pay you $50 to help. But they reserved the truck during the time your kid will be starring in a school play.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="2635">Take the job</div>
+                <div class="option" id="2636">Go see the play</div>
+              </div>
+            </div>
+            <div class="challenge" id="85350">
+              <div class="title">Funeral</div>
+              <div class="copy">Your grandfather has passed away. You’ve always been very close to him, and you want to go to the memorial service, which is being held several states away.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="85351">Drive to the service ($75)</div>
+                <div class="option" id="85352">Skip the memorial</div>
+              </div>
+            </div>
+            <div class="challenge" id="85353">
+              <div class="title">Wedding</div>
+              <div class="copy">Your best friend from childhood is getting married, and they want you to be in the wedding. The only problem: It’s in another state.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="85354">Drive to the wedding ($75)</div>
+                <div class="option" id="85355">Say you can’t go</div>
+              </div>
+            </div>
+            <div class="challenge" id="85356">
+              <div class="title">Gifted Program</div>
+              <div class="copy">Your child has been identified as gifted and invited into the school’s gifted program. The materials for the course cost $50.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="85360">Pay the money</div>
+                <div class="option" id="85361">Decline the opportunity</div>
+              </div>
+            </div>
+            <div class="challenge" id="85357">
+              <div class="title">Athletics</div>
+              <div class="copy">Your child wants to join an after-school sports team, which requires a physical and uniform.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="85362">Say yes ($50)</div>
+                <div class="option" id="85363">Say no</div>
+              </div>
+            </div>
+            <div class="challenge" id="85365">
+              <div class="title">OutofGas_JOB_S</div>
+              <div class="copy">You come out of your house to discover that someone has siphoned the gas from your car. And you’re already running late for work.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="85366">Take the bus</div>
+                <div class="option" id="85367">Call in sick</div>
+                <div class="option" id="85368">Ask a friend for a ride</div>
+              </div>
+            </div>
+            <div class="challenge" id="85370">
+              <div class="title">Broken Window</div>
+              <div class="copy">Life throws curveballs, and so does a kid on your block. He shattered your window, and your landlord insists you pay $100 to fix it.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="85371">Pay to replace the window ($100)</div>
+                <div class="option" id="85372">Get legal help</div>
+                <div class="option" id="85428">Buy some plastic to put over the broken window ($5)</div>
+              </div>
+            </div>
+            <div class="challenge" id="85373">
+              <div class="title">Chest Pains (no insurance)</div>
+              <div class="copy">You’ve been experiencing some sharp pains in your chest lately, and your family has a history of heart problems.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="85375">Get it checked out ($250)</div>
+                <div class="option" id="85376">Ignore it</div>
+              </div>
+            </div>
+            <div class="challenge" id="85374">
+              <div class="title">Fitness Program</div>
+              <div class="copy">A little exercise goes a long way, both for keeping you healthy and relieving stress. You need to start a regular fitness regimen.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="85377">Join a gym ($25)</div>
+                <div class="option" id="85378">Ask a friend to be your running buddy</div>
+              </div>
+            </div>
+            <div class="challenge" id="85379">
+              <div class="title">Home Internet</div>
+              <div class="copy">It’s easier to look for extra ways to make money if you have access to the Web.  But you don’t have Internet at home since you moved.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="85380">Sign up for home Internet ($60 a month)</div>
+                <div class="option" id="85381">Get online at the public library</div>
+                <div class="option" id="85382">Go without Internet</div>
+              </div>
+            </div>
+            <div class="challenge" id="85384">
+              <div class="title">Server_Bleach_JOB</div>
+              <div class="copy">You’re helping out the dishwasher during a lull when you accidentally get bleach all over your uniform shirt.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="85386">Buy a new one</div>
+                <div class="option" id="85387">Wear the damaged one</div>
+              </div>
+            </div>
+            <div class="challenge" id="85391">
+              <div class="title">Charitable Neighbor</div>
+              <div class="copy">A neighbor stops by and offers you a hand-me-down coat from their family; yours is in tatters.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="85392">Take the coat</div>
+                <div class="option" id="85393">Turn it down</div>
+              </div>
+            </div>
+            <div class="challenge" id="85394">
+              <div class="title">Pipes</div>
+              <div class="copy">Your bathroom sink has a small leak that just became a big leak. Your landlord won’t return your calls, and you can’t put it off any longer.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="85395">Call a plumber ($150)</div>
+                <div class="option" id="85396">Try to fix it yourself</div>
+              </div>
+            </div>
+            <div class="challenge" id="85397">
+              <div class="title">Smoking</div>
+              <div class="copy">Your stress level is through the roof these days. A friend who hears you venting offers you a cigarette to take the edge off.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="85398">Light up – it’s just one</div>
+                <div class="option" id="85399">Say no</div>
+              </div>
+            </div>
+            <div class="challenge" id="85400">
+              <div class="title">Speeding Ticket</div>
+              <div class="copy">You’re sure you weren’t speeding, but the cop who gave you a ticket disagrees.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="85401">Pay it off ($250)</div>
+                <div class="option" id="85402">Contest it in court</div>
+              </div>
+            </div>
+            <div class="challenge" id="85404">
+              <div class="title">New Shoes</div>
+              <div class="copy">Your child’s sneakers are falling apart and it’s time to buy new ones. Name brands are important, but they don’t come cheap.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="85405">Buy the name brand ($100)</div>
+                <div class="option" id="85406">Go to the thrift store ($10)</div>
+              </div>
+            </div>
+            <div class="challenge" id="85407">
+              <div class="title">Friend of a Friend</div>
+              <div class="copy">A friend of a friend needs a place to stay. He’s offered you $200 to camp out in your living room.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="85408">Say yes</div>
+                <div class="option" id="85409">Say no</div>
+              </div>
+            </div>
+            <div class="challenge" id="85410">
+              <div class="title">Friend of a Friend 2</div>
+              <div class="copy">Your roommate may have given you another $200, but he brought a whole lot of problems, staying up all night and partying in your house. And he’s not about to move out.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="85411">Ask your landlord to evict him</div>
+                <div class="option" id="85412">Put up with it</div>
+              </div>
+            </div>
+            <div class="challenge" id="85413">
+              <div class="title">College Loans</div>
+              <div class="copy">Your college degree isn’t helping you right now, but you still have to pay your loans. You just got a bill for $250.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="85414">Pay it</div>
+                <div class="option" id="85415">Ignore It</div>
+              </div>
+            </div>
+            <div class="challenge" id="85417">
+              <div class="title">Chest Pains (insurance)</div>
+              <div class="copy">You’ve been experiencing some sharp pains in your chest lately, and your family has a history of heart problems.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="85418">Get it checked out ($20)</div>
+                <div class="option" id="85419">Ignore it</div>
+              </div>
+            </div>
+            <div class="challenge" id="85424">
+              <div class="title">Impounded_JOB</div>
+              <div class="copy">During a routine traffic stop, a police officer spotted your expired registration tags. Your car’s been impounded and it’ll cost $1,500 to get it back.</div>
+              <div class="question">WHAT DO YOU WANT TO DO?</div>
+              <div class="options">
+                <div class="option" id="85425">Pay the money</div>
+                <div class="option" id="85426">Give up your car</div>
+              </div>
+            </div>
+          </div>        
         <div id="rings"></div>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/libs/jquery-1.9.0.min.js"><\/script>')</script>
