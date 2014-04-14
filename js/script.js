@@ -88,27 +88,26 @@ $(document).ready(function() {
         }
       }
       function showResults() {
-        $('.challenges').addClass('out');
-        $('.challenge').addClass('out')
+        var oldChallenge = currentChallenge;
+        $('.challenge').eq(oldChallenge).addClass('out')
         $('.result').removeClass('hidden');
-        $('.result').removeClass('out');
+        setTimeout(function(){
+          $('.challenge').eq(oldChallenge).css({
+            display: 'none'
+          })
+        },1000)
       }
       function nextChallenge() {
-        $('.challenges').removeClass('out');
         $('.result').addClass('out');
         setTimeout(function(){
           $('.result').removeClass('out');
           $('.result').addClass('hidden');
         },1000)
-        $('.challenge').removeClass('out')
-        $('.challenge').eq(currentChallenge).css({
-          display: 'none'
-        })
         $('.tick').eq(currentChallenge).removeClass('current')
+        
         currentChallenge++;
-        $('.challenge').eq(currentChallenge).css({
-          display: 'block'
-        })
+        
+        $('.challenge').eq(currentChallenge).removeClass('hidden');
         $('#date-line').css({
           top: (currentChallenge+1)*(WIN_H/33)
         })

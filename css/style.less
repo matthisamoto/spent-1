@@ -478,7 +478,7 @@ li{
   -webkit-transform-origin: 0% 0%;
   pointer-events: auto;
   cursor: pointer;
-  .transition(1s, @easeOut);
+  .transition(1s, @easeOut, all, .75s);
   button{
     background: @darkBlue;
     color: @blue;
@@ -501,13 +501,12 @@ li{
     pointer-events: none;
     opacity: 0;
     -webkit-transform: perspective(2000px) translate3d(-50%,-50%,2000px);
-    -webkit-transform-origin: 0% 0%;
+    .transition(1s, @easeIn);
   }
   &.hidden{
     pointer-events: none;
     opacity: 0;
     -webkit-transform: perspective(2000px) translate3d(-50%,-50%,-2000px);
-    -webkit-transform-origin: 0% 0%;
   }
 }
 #rings{
@@ -747,10 +746,12 @@ footer{
 }
 .challenge{
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 50%;
+  left: 50%;
+  .transition(1s, @easeOut, all, .75s);
+  .transform(perspective(2000px) translate3d(-50%,-50%,0px));
+  -webkit-transform-origin: 0% 100px;
   position: fixed;
-  display: none;
   width: 100%;
   height: 100%;
   padding: 150px 70px;
@@ -775,14 +776,25 @@ footer{
     position: relative;
     margin: auto;
   }
+  &.out{
+    pointer-events: none;
+    opacity: 0;
+    -webkit-transform: perspective(2000px) translate3d(-50%,-50%,2000px);
+    .transition(1s, @easeIn);
+  }
+  &.hidden{
+    pointer-events: none;
+    opacity: 0;
+    -webkit-transform: perspective(2000px) translate3d(-50%,-50%,-2000px);
+  }
 }
 .challenge:first-of-type{
   display: block;
 }
 
-.out{
-  .transition(1s, @linear);
-  .transform(perspective(2000px) translate3d(0,0,1200px));
-  opacity: 0;
-  pointer-events: none;
-}
+// .out{
+//   .transition(1s, @linear);
+//   .transform(perspective(2000px) translate3d(-50%,-50%,1200px));
+//   opacity: 0;
+//   pointer-events: none;
+// }
