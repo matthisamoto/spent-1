@@ -24,18 +24,25 @@ $(document).ready(function() {
 
 	var events = {
 		init: function(){
+
+      setTimeout(function(){
+        // Hide the address bar!
+        window.scrollTo(0, 1);
+      }, 0);
       drawRings();
 			pageResize();
       win.resize(pageResize);
       $('.copy').widowFix();
       $('h1').widowFix();
+      $('.option').widowFix();
       $('#prove-it').click(showIntro);
       $('#main-nav').click(showNav);
       $('.option').click(answerQuestion);
       $('#audio-btn').click(toggleMusic);
       $('#balance h2').click(toggleExtras);
       $('#intro').click(answerQuestion);
-      $('.challenge').click(nextChallenge);
+      $('.challenge').click(showResults);
+      $('.result').click(nextChallenge);
       $('form button').css({
         opacity: 0,
         top: 40
@@ -44,7 +51,8 @@ $(document).ready(function() {
         $('#extras').toggleClass('expanded')
       }
       function answerQuestion(e) {
-        $('#balance,#day,#date-line,#logo,#ticks').addClass('visible');
+        $('#balance,#day,#date-line,#ticks').addClass('visible');
+        $('#welcome,#logo').removeClass('out');
         $('.challenges').css({
           display: 'block'
         })
@@ -62,7 +70,7 @@ $(document).ready(function() {
         $('#main-nav').removeClass('expanded').unbind('click').click(showNav);
       }
       function showIntro() {
-        snd.play();
+        //snd.play();
         $('#audio-btn').addClass('visible');
         $('#welcome,#logo').addClass('out');
         $('#welcome').css({
@@ -76,10 +84,23 @@ $(document).ready(function() {
           snd.pause();
         } else {
           $('#audio-btn').removeClass('off');
-          snd.play();
+          //snd.play();
         }
       }
+      function showResults() {
+        $('.challenges').addClass('out');
+        $('.challenge').addClass('out')
+        $('.result').removeClass('hidden');
+        $('.result').removeClass('out');
+      }
       function nextChallenge() {
+        $('.challenges').removeClass('out');
+        $('.result').addClass('out');
+        setTimeout(function(){
+          $('.result').removeClass('out');
+          $('.result').addClass('hidden');
+        },1000)
+        $('.challenge').removeClass('out')
         $('.challenge').eq(currentChallenge).css({
           display: 'none'
         })
@@ -97,7 +118,6 @@ $(document).ready(function() {
           alert('Payday!')
         }
       }
-
       // WINDOW
 			function pageResize (e) {
 				WIN_H = win.height();
