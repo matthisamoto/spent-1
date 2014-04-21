@@ -12,6 +12,9 @@ eggs
 parts
 bin
 var
+xml
+_working
+screens
 sdist
 develop-eggs
 .installed.cfg
@@ -34,3 +37,4 @@ nosetests.xml
 .mr.developer.cfg
 .project
 .pydevproject
+sftp-config.json
