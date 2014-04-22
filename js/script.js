@@ -109,7 +109,7 @@ $(document).ready(function() {
         
         $('.challenge').eq(currentChallenge).removeClass('hidden');
         $('#date-line').css({
-          top: (currentChallenge+1)*(WIN_H/33)
+          top: (currentChallenge+1)*(WIN_H/33)-5
         })
         $('#current-day').html(currentChallenge+1)
         $('.tick').eq(currentChallenge).addClass('current');
@@ -151,9 +151,10 @@ $(document).ready(function() {
             'top': (WIN_H/33)*i
           })
           if(i>= 9 && i%7==2 && i<30){
-            $('.tick').eq(i).html('$')
+            $('.tick').eq(i).html('$').addClass('payday');
           }else if(i<30){
-            $('.tick').eq(i).html(i+1)
+            //$('.tick').eq(i).html(i+1)
+
           }
           
         })

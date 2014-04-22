@@ -693,9 +693,10 @@ footer{
 #date-line{
   right: 0;
   position: fixed;
-  width: 5px;
+  width: 25px;
   border-top: 1px solid @orange;
   top: 29px;
+  .transition(1s,@linear,all,0s);
 }
 #ticks{
   position: fixed;
@@ -705,14 +706,23 @@ footer{
   text-align: right;
   height: 100%;
   .tick{
+    .transition(1s,@easeOut);
     position: absolute;
     .body-font(1em);
     text-align: right;
-    width: 20px;
+    width: 5px;
+    height: 5px;
+    .rounded(50%);
+    background: @border-color;
     color: @border-color;
   }
+  .tick.payday{
+    background: transparent;
+  }
   .tick.current{
-    color: @tan;
+    background: @orange;
+    width: 9px;
+    height: 9px;
   }
   .tick:nth-child(7n+10){
     color: @blue;
@@ -727,10 +737,12 @@ footer{
 }
 #logo{
     position: fixed;
+    display: block;
     margin: auto;
     left: 50%;
     -webkit-transform: translateX(-50%);
     bottom: 50px;
+    z-index: 20000;
 }
 #donate{
   .title-font(3em);
